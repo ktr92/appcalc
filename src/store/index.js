@@ -10,7 +10,7 @@ export default createStore({
     height: 160, // 160 - 
     weight: 35, // 35 -  */
 
-    selectedType: 'men',
+    selectedType: '',
 
     category: [
       {
@@ -72,7 +72,7 @@ export default createStore({
       return state.category.filter(i => i.main === 1)
     },
     getResults: state => (param) => {
-      return state.results.filter(i => i.category === param)
+      return state.results
     },
     
     getSelectedType: state => () => {

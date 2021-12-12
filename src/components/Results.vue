@@ -3,7 +3,7 @@
     <table>
       <tr v-for="row in res" :key="row.id">
         <td>{{ row.name }}</td>
-        <td></td>
+        <td>{{ row.category[type].count }}</td>
       </tr>
     </table>
   </div>
@@ -21,9 +21,10 @@ export default {
   },
   setup() {
     const store = useStore()
+    const type = computed(() => store.getters.getSelectedType())
     const res = computed(() => store.getters.getResults())
     return {
-     res
+     res, type
     }
 
   }

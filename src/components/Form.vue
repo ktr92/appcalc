@@ -10,6 +10,7 @@
             type="radio"  
             :value="item.type" 
             v-model="inputType"
+            @change="changeType"
             >
           <span>{{ item.label }}</span>
         </label>
@@ -21,7 +22,7 @@
 
 <script>
 import { useStore } from "vuex";
-import { onMounted, onUpdated, ref, computed } from "vue";
+import { onMounted, onUpdated, ref, computed, watch } from "vue";
 import M from 'materialize-css'
 
 
@@ -33,27 +34,31 @@ export default {
     const types = store.getters.getType
     let inputType = ref('men')
 
-    const currentType = computed({
+    const changeType = () => {
+      store.commit('calcResults', inputType.value)
+    }
+
+    /* const currentType = computed({
       get() {
         return store.getters.getSelectedType()
       },
       set(inputType) {
-         store.commit('calcResults', inputType)
+         store.commit('calcResults', inputType.value)
       }
     })
-    
-  
+     */
 
-    onUpdated(() => {
-     console.log(store.getters.getSelectedType())
-    })
+
+    watch(() => {
+       console.log(store.getters.getSelectedType())
+    }) 
     
     onMounted(() => {
       M.AutoInit()
     })
 
     return {
-      types,currentType,inputType
+      types,changeType,inputType
     }
   },
   
