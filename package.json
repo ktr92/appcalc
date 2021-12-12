@@ -15,8 +15,6 @@
     "vue": "^3.0.0",
     "vue-material-design-icons": "^5.0.0",
     "vue-materialize": "^1.0.0",
-    "vue3-table-lite": "^1.1.3",
-    "vuetify": "^3.0.0-alpha.0",
     "vuex": "^4.0.0-0",
     "webfontloader": "^1.0.0"
   },

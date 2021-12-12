@@ -16,6 +16,14 @@
         </label>
        
       </div><!-- /.radiogroup -->
+
+      <p class="range-field">
+        <label for="test">Укажите возраст</label>
+        <input type="range" min="18" max="99" 
+           v-model="inputAge"
+          @input="changeAge"
+         />
+      </p>
     </form>
   </div>
 </template>
@@ -26,16 +34,25 @@ import { onMounted, onUpdated, ref, computed, watch } from "vue";
 import M from 'materialize-css'
 
 
+
 export default {
   name: 'Form',
+  components: {
+    
+  },
    setup() {
+    const marks = [18, 30, 50, 70, 90]
     const valid = true
     const store = useStore()
     const types = store.getters.getType
     let inputType = ref('men')
+    let inputAge = ref(33)
 
     const changeType = () => {
       store.commit('calcResults', inputType.value)
+    }
+    const changeAge = () => {
+      store.commit('calcResultsAge', inputAge.value) 
     }
 
     /* const currentType = computed({
@@ -50,15 +67,18 @@ export default {
 
 
     watch(() => {
-       console.log(store.getters.getSelectedType())
+       console.log()
     }) 
     
     onMounted(() => {
       M.AutoInit()
+      var array_of_dom_elements = document.querySelectorAll("input[type=range]");
+      M.Range.init(array_of_dom_elements);
+   
     })
 
     return {
-      types,changeType,inputType
+      types, changeType, inputType, changeAge, marks, inputAge
     }
   },
   

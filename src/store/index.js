@@ -10,7 +10,8 @@ export default createStore({
     height: 160, // 160 - 
     weight: 35, // 35 -  */
 
-    selectedType: '',
+    selectedType: 'men',
+    selectedAge: 18,
 
     category: [
       {
@@ -30,14 +31,14 @@ export default createStore({
     ],
 
     results: [
-      {
+     /*  {
         id: '001',
         name: 'Селен',
         category: {
-          men: {
+          "men": {
             count: 70
           },
-          women: {
+          "women": {
             count: 55
           }
         }
@@ -46,11 +47,38 @@ export default createStore({
         id: '002',
         name: 'Витамин С',
         category: {
-          men: {
+          "men": {
             count: 90
           },
-          women: {
+          "women": {
             count: 11
+          }
+        }
+      }, */
+      {
+        id: '003',
+        name: 'Кальций',
+        category: {
+          "men": {
+            age: {
+              "under60": {
+                count: 1000
+              },
+              "over60": {
+                count: 1200
+              }
+            }
+            
+          },
+          "women": {
+            age: {
+              "under60": {
+                count: 999
+              },
+              "over60": {
+                count: 1199
+              }
+            }
           }
         }
       }
@@ -61,6 +89,9 @@ export default createStore({
   mutations: {
     calcResults(state, payload) {
       state.selectedType = payload || 'men'
+    },
+    calcResultsAge(state, payload) {
+      state.selectedAge = payload || 18
     }
   },
   actions: {
@@ -77,6 +108,13 @@ export default createStore({
     
     getSelectedType: state => () => {
       return state.selectedType
+    },
+    
+    getSelectedAge: state => () => {
+      return state.selectedAge > 60 ? "over60" : "under60"
+    },
+    getCurrentAge: state => () => {
+      return state.selectedAge
     },
     
   }
