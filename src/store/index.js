@@ -2,10 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    type: ['men', 'women', 'pregnant'], // 0 - мужчины, 1 - женщины, 2 - берем. женщины
-    activity: 1, // 1-5
-    age: '1829', // 18-29, 30-39, ... , > 60
-
+   
      /*   target: 2, // 0 - снижение, 1 - набор массы, 2 - поддержанеи массы
     height: 160, // 160 - 
     weight: 35, // 35 -  */
@@ -132,7 +129,6 @@ export default createStore({
   },
   mutations: {
     calcResults(state, payload) {   
-      state.selectedPregnant = null  
       state.selectedType = payload || 'men'
     },
     calcResultsAge(state, payload) {
@@ -159,7 +155,7 @@ export default createStore({
       return state.selectedType
     },
     getIsWomen: state => () => {
-      return state.selectedType == "women" || "pregnant" ? 1 : null
+      return (state.selectedType == "women") || (state.selectedType == "pregnant") ? 1 : 0
     },
     
     getSelectedAge: state => () => {

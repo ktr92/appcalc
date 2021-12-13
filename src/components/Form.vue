@@ -17,7 +17,7 @@
        
       </div><!-- /.radiogroup -->
 
-      <div class="input-field col s12" v-if="isWomen">
+      <div class="input-field col s12" v-show="isWomen">
         <select v-model="isPregnant" @change="changePregnant">
           <option value="0" selected>Нет</option>
           <option value="1">Беременность (1-я половина)</option>
@@ -58,15 +58,17 @@ export default {
     const types = store.getters.getType
     let inputType = ref('men')
     let inputAge = ref(33)
-    let isPregnant = ref(null) 
+    let isPregnant = ref("0") 
 
     const changeType = () => {
-      isPregnant.value = '0'
-      store.commit('calcResultsPregnant', isPregnant.value) 
+      if (inputType.value != "pregnant") {
+         isPregnant.value = "0"
+      }
+      store.commit('calcResultsPregnant', null) 
       store.commit('calcResults', inputType.value)
     }
     const changeAge = () => {
-      store.commit('calcResultsPregnant', isPregnant.value) 
+      
       store.commit('calcResultsAge', inputAge.value) 
     }
     const changePregnant = () => {
@@ -87,7 +89,7 @@ export default {
 
 
     watch(() => {
-       console.log()
+       console.log(isPregnant.value)
       
     }) 
 
