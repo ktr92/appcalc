@@ -10,7 +10,7 @@
             type="radio"  
             :value="item.type" 
             v-model="inputType"
-            @change="changeType"
+            @change="recalc"
             >
           <span>{{ item.label }}</span>
         </label>
@@ -18,7 +18,7 @@
       </div><!-- /.radiogroup -->
 
       <div class="input-field col s12" v-show="isWomen">
-        <select v-model="isPregnant" @change="changePregnant">
+        <select v-model="isPregnant" @change="recalc">
           <option value="0" selected>Нет</option>
           <option value="1">Беременность (1-я половина)</option>
           <option value="2">Беременность (2-я половина)</option>
@@ -32,7 +32,7 @@
         <label for="test">Укажите возраст</label>
         <input type="range" min="18" max="99" 
            v-model="inputAge"
-          @input="changeAge"
+          @input="recalc"
          />
       </p>
     </form>
@@ -52,28 +52,24 @@ export default {
     
   },
    setup() {
-    const marks = [18, 30, 50, 70, 90]
     const valid = true
     const store = useStore()
     const types = store.getters.getType
     let inputType = ref('men')
     let inputAge = ref(33)
-    let isPregnant = ref("0") 
+    let isPregnant = ref("0")
+    
+    const recalc = () => {
+      if (inputType.value == "men") {
+          isPregnant.value = "0"
+        }
+        store.commit('calc', {
+          type: inputType.value,
+          age: inputAge.value,
+          pregnant: isPregnant.value
+        }) 
+    }
 
-    const changeType = () => {
-      if (inputType.value != "pregnant") {
-         isPregnant.value = "0"
-      }
-      store.commit('calcResultsPregnant', null) 
-      store.commit('calcResults', inputType.value)
-    }
-    const changeAge = () => {
-      
-      store.commit('calcResultsAge', inputAge.value) 
-    }
-    const changePregnant = () => {
-      store.commit('calcResultsPregnant', isPregnant.value) 
-    }
 
     const isWomen = computed(() => store.getters.getIsWomen())
 
@@ -106,7 +102,7 @@ export default {
     })
 
     return {
-      types, changeType, inputType, changeAge, marks, inputAge, isWomen, isPregnant, changePregnant
+      types, inputType, inputAge, isWomen, isPregnant, recalc
     }
   },
   

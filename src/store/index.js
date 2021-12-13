@@ -72,10 +72,10 @@ export default createStore({
           "women": {
             age: {
               "under60": {
-                count: 1000
+                count: 999
               },
               "over60": {
-                count: 1200
+                count: 1199
               }
             }
           },
@@ -128,7 +128,26 @@ export default createStore({
 
   },
   mutations: {
-    calcResults(state, payload) {   
+    calc(state, {
+      type,
+      age,
+      pregnant })
+      {
+        if (type == "men") {
+          state.selectedPregnant = null
+        }
+        else {
+          state.selectedPregnant = pregnant || "0"
+        }
+        if (pregnant && pregnant !== '0') {
+          state.selectedType = "pregnant"
+        } else {
+          state.selectedType = type || 'men'
+        }
+        
+        state.selectedAge = age || 18
+    },
+   /*  calcResults(state, payload) {   
       state.selectedType = payload || 'men'
     },
     calcResultsAge(state, payload) {
@@ -137,7 +156,7 @@ export default createStore({
     calcResultsPregnant(state, payload) {
       state.selectedType = "pregnant"
       state.selectedPregnant = payload || "0"
-    }
+    } */
   },
   actions: {
   },
