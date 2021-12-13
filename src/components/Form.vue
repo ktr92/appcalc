@@ -29,12 +29,41 @@
       </div>
 
       <p class="range-field">
-        <label for="test">Укажите возраст</label>
+        <label>Укажите возраст</label>
         <input type="range" min="18" max="99" 
            v-model="inputAge"
           @input="recalc"
          />
       </p>
+
+      <p class="range-field">
+        <label>Укажите ваш рост (см)</label>
+        <input type="range" min="100" max="250" 
+           v-model="inputHeight"
+          @input="reformula"
+         />
+      </p>
+
+       <p class="range-field">
+        <label>Укажите ваш вес (кг)</label>
+        <input type="range" min="25" max="250" 
+           v-model="inputWeight"
+          @input="reformula"
+         />
+      </p>
+
+      <div class="input-field col s12">
+        <select v-model="inputActivity" @change="reformula">
+          <option value="1.2" >Минимальная активность</option>
+          <option value="1.375">Слабая активность</option>
+          <option value="1.55" selected>Средняя активность</option>
+          <option value="1.725">Высокая активность</option>
+          <option value="1.9">Экстра-активность</option>
+        </select>
+        <label>Уровень активности</label>
+      </div>
+
+
     </form>
   </div>
 </template>
@@ -58,6 +87,9 @@ export default {
     let inputType = ref('men')
     let inputAge = ref(33)
     let isPregnant = ref("0")
+    let inputHeight = ref(170)
+    let inputWeight = ref(60)
+    let inputActivity = ref(1.55)
     
     const recalc = () => {
       if (inputType.value == "men") {
@@ -67,6 +99,16 @@ export default {
           type: inputType.value,
           age: inputAge.value,
           pregnant: isPregnant.value
+        }) 
+    }
+
+    const reformula = () => {
+        store.commit('formula', {
+          type: inputType.value,
+          height: inputHeight.value,
+          weight: inputWeight.value,
+          age: inputAge.value,
+          activity: inputActivity.value
         }) 
     }
 
@@ -102,7 +144,16 @@ export default {
     })
 
     return {
-      types, inputType, inputAge, isWomen, isPregnant, recalc
+      types, 
+      inputType, 
+      inputAge, 
+      isWomen, 
+      isPregnant, 
+      recalc, 
+      reformula,
+      inputWeight,
+      inputHeight,
+      inputActivity
     }
   },
   
