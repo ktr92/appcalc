@@ -3,7 +3,8 @@
     <table>
       <tr v-for="row in res" :key="row.id">
         <td>{{ row.name }}</td>
-        <td>{{ row.category[type].age[age].count }}</td>
+        <td v-if="pregnant && pregnant != '0'">{{ row.category[type].age[age].stage[pregnant].count }} </td>
+        <td v-else>{{ row.category[type].age[age].count }}</td>
       </tr>
     </table>
   </div>
@@ -24,15 +25,18 @@ export default {
     const res = computed(() => store.getters.getResults())
     const type = computed(() => store.getters.getSelectedType())
     const age = computed(() => store.getters.getSelectedAge())
-    
+    const pregnant = computed(() => store.getters.getSelectedPregnant())
 
      watch(() => {
-       console.log(age.value)
+       console.log(pregnant.value)
     }) 
 
     
     return {
-     res, type, age
+     res, 
+     type, 
+     age, 
+     pregnant
     }
 
   }

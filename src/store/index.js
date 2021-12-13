@@ -12,6 +12,7 @@ export default createStore({
 
     selectedType: 'men',
     selectedAge: 18,
+    selectedPregnant: null,
 
     category: [
       {
@@ -25,7 +26,8 @@ export default createStore({
         main: 1
       },
       {
-        type: 'pregnant', // берем женщины      
+        type: 'pregnant', // берем. женщины      
+        label: 'Беременность',
         main: 0
       }
     ],
@@ -73,10 +75,52 @@ export default createStore({
           "women": {
             age: {
               "under60": {
-                count: 999
+                count: 1000
               },
               "over60": {
-                count: 1199
+                count: 1200
+              }
+            }
+          },
+          "pregnant": {
+            age: {
+              "under60": {
+                stage: {
+                  "0": {
+                    count: 1000
+                  },
+                  "1": {
+                    count: 1000
+                  },
+                  "2": {
+                    count: 1300
+                  },
+                  "3": {
+                    count: 1400
+                  }, 
+                  "4": {
+                    count: 1400  
+                  }
+                }
+              },
+              "over60": {
+                stage: {
+                  "0": {
+                    count: 1200
+                  },
+                  "1": {
+                    count: 1200
+                  },
+                  "2": {
+                    count: 1500
+                  },
+                  "3": {
+                    count: 1600
+                  }, 
+                  "4": {
+                    count: 1600  
+                  }
+                }
               }
             }
           }
@@ -87,11 +131,16 @@ export default createStore({
 
   },
   mutations: {
-    calcResults(state, payload) {
+    calcResults(state, payload) {   
+      state.selectedPregnant = null  
       state.selectedType = payload || 'men'
     },
     calcResultsAge(state, payload) {
       state.selectedAge = payload || 18
+    },
+    calcResultsPregnant(state, payload) {
+      state.selectedType = "pregnant"
+      state.selectedPregnant = payload || "0"
     }
   },
   actions: {
@@ -109,6 +158,9 @@ export default createStore({
     getSelectedType: state => () => {
       return state.selectedType
     },
+    getIsWomen: state => () => {
+      return state.selectedType == "women" || "pregnant" ? 1 : null
+    },
     
     getSelectedAge: state => () => {
       return state.selectedAge > 60 ? "over60" : "under60"
@@ -116,6 +168,10 @@ export default createStore({
     getCurrentAge: state => () => {
       return state.selectedAge
     },
+    getSelectedPregnant: state => () => {
+      return state.selectedPregnant
+    },
+    
     
   }
 })

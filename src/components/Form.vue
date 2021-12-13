@@ -17,6 +17,17 @@
        
       </div><!-- /.radiogroup -->
 
+      <div class="input-field col s12" v-if="isWomen">
+        <select v-model="isPregnant" @change="changePregnant">
+          <option value="0" selected>Нет</option>
+          <option value="1">Беременность (1-я половина)</option>
+          <option value="2">Беременность (2-я половина)</option>
+          <option value="3">Грудное вскармливание (1-6 мес.)</option>
+          <option value="4">Грудное вскармливание (7-12 мес.)</option>
+        </select>
+        <label>Беременность</label>
+      </div>
+
       <p class="range-field">
         <label for="test">Укажите возраст</label>
         <input type="range" min="18" max="99" 
@@ -47,13 +58,22 @@ export default {
     const types = store.getters.getType
     let inputType = ref('men')
     let inputAge = ref(33)
+    let isPregnant = ref(null) 
 
     const changeType = () => {
+      isPregnant.value = '0'
+      store.commit('calcResultsPregnant', isPregnant.value) 
       store.commit('calcResults', inputType.value)
     }
     const changeAge = () => {
+      store.commit('calcResultsPregnant', isPregnant.value) 
       store.commit('calcResultsAge', inputAge.value) 
     }
+    const changePregnant = () => {
+      store.commit('calcResultsPregnant', isPregnant.value) 
+    }
+
+    const isWomen = computed(() => store.getters.getIsWomen())
 
     /* const currentType = computed({
       get() {
@@ -68,7 +88,13 @@ export default {
 
     watch(() => {
        console.log()
+      
     }) 
+
+    onUpdated(() => {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    })
     
     onMounted(() => {
       M.AutoInit()
@@ -78,7 +104,7 @@ export default {
     })
 
     return {
-      types, changeType, inputType, changeAge, marks, inputAge
+      types, changeType, inputType, changeAge, marks, inputAge, isWomen, isPregnant, changePregnant
     }
   },
   
