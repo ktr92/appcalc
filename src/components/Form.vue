@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+ 
     <form>
       <div class="radiogroup">
         <label v-for="item in types" :key="item" :for="item.type">
@@ -10,7 +10,7 @@
             type="radio"  
             :value="item.type" 
             v-model="inputType"
-            @change="recalc"
+            @change="recalcformula"
             >
           <span>{{ item.label }}</span>
         </label>
@@ -28,16 +28,49 @@
         <label>Беременность</label>
       </div>
 
-      <p class="range-field">
+    <!--   <p class="range-field">
         <label>Укажите возраст</label>
         <input type="range" min="18" max="99" 
            v-model="inputAge"
-          @input="recalc"
+          @input="recalcformula"
          />
-      </p>
+      </p> -->
 
-      <p class="range-field">
-        <label>Укажите ваш рост (см)</label>
+      <div class="range">
+        <label for="">Укажите возраст</label>
+            <Slider
+        :lazy="false"
+        :min="18"
+      
+        v-model="inputAge" 
+        @update="recalcformula"/>
+      </div>
+
+      <div class="range">
+        <label for="">Укажите рост</label>
+        <Slider
+        :lazy="false"  
+       
+        v-model="inputHeight" 
+        :max="220"
+        @update="recalcformula"/>
+      </div>
+    
+       <div class="range">
+        <label for="">Укажите вес</label>
+        <Slider
+        :lazy="false"  
+        
+        v-model="inputWeight" 
+        @update="recalcformula"/>
+      </div>
+        
+
+
+        
+
+     <!--  <p class="range-field">
+        <label>Укажите рост (см)</label>
         <input type="range" min="100" max="250" 
            v-model="inputHeight"
           @input="reformula"
@@ -45,12 +78,12 @@
       </p>
 
        <p class="range-field">
-        <label>Укажите ваш вес (кг)</label>
+        <label>Укажите вес (кг)</label>
         <input type="range" min="25" max="250" 
            v-model="inputWeight"
           @input="reformula"
          />
-      </p>
+      </p> -->
 
       <div class="input-field col s12">
         <select v-model="inputActivity" @change="reformula">
@@ -65,27 +98,27 @@
 
 
     </form>
-  </div>
+
 </template>
 
 <script>
 import { useStore } from "vuex";
 import { onMounted, onUpdated, ref, computed, watch } from "vue";
 import M from 'materialize-css'
-
-
+import Slider from '@vueform/slider'
+import "@vueform/slider/themes/default.css"
 
 export default {
   name: 'Form',
   components: {
-    
+    Slider
   },
    setup() {
     const valid = true
     const store = useStore()
     const types = store.getters.getType
     let inputType = ref('men')
-    let inputAge = ref(33)
+    let inputAge = ref(40)
     let isPregnant = ref("0")
     let inputHeight = ref(170)
     let inputWeight = ref(60)
@@ -113,6 +146,28 @@ export default {
     }
 
 
+    const recalcformula = () => {
+       
+        
+       store.commit('calc', {
+          type: inputType.value,
+          age: inputAge.value,
+          pregnant: isPregnant.value
+        }) 
+
+        store.commit('formula', {
+          type: inputType.value,
+          height: inputHeight.value,
+          weight: inputWeight.value,
+          age: inputAge.value,
+          activity: inputActivity.value
+        }) 
+
+     
+
+    }
+
+
     const isWomen = computed(() => store.getters.getIsWomen())
 
     /* const currentType = computed({
@@ -127,7 +182,7 @@ export default {
 
 
     watch(() => {
-       console.log(isPregnant.value)
+       console.log()
       
     }) 
 
@@ -138,8 +193,22 @@ export default {
     
     onMounted(() => {
       M.AutoInit()
-      var array_of_dom_elements = document.querySelectorAll("input[type=range]");
-      M.Range.init(array_of_dom_elements);
+  /*     var array_of_dom_elements = document.querySelectorAll("input[type=range]");
+      M.Range.init(array_of_dom_elements); */
+      
+      store.commit('calc', {
+        type: inputType.value,
+        age: inputAge.value,
+        pregnant: isPregnant.value
+      }) 
+
+      store.commit('formula', {
+        type: inputType.value,
+        height: inputHeight.value,
+        weight: inputWeight.value,
+        age: inputAge.value,
+        activity: inputActivity.value
+      }) 
    
     })
 
@@ -153,7 +222,8 @@ export default {
       reformula,
       inputWeight,
       inputHeight,
-      inputActivity
+      inputActivity,
+      recalcformula
     }
   },
   
@@ -177,4 +247,54 @@ li {
 a {
   color: #42b983;
 }
+.input-field.col.s12 {
+    padding-left: 0;
+}
+.input-field.col label {
+    left: 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+    top: -36px;
+}
+p.range-field label {
+  font-size: 1rem;
+}
+.radiogroup {
+    margin-bottom: 20px;
+}
+.radiogroup label {
+    margin-right: 30px;
+}
+form > * {
+  margin-bottom: 30px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: red;
+  }
+  input[type=range]::-moz-range-thumb {
+    background-color: red;
+  }
+  input[type=range]::-ms-thumb {
+    background-color: red;
+  }
+
+  /***** These are to edit the thumb and the text inside the thumb *****/
+  input[type=range] + .thumb {
+    background-color: #dedede;
+  }
+  input[type=range] + .thumb.active .value {
+    color: red;
+  }
+
+  .range {
+    margin-bottom: 30px;
+  }
+
+  .range label {
+        font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
 </style>

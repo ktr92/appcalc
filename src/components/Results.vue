@@ -1,5 +1,5 @@
 <template>
-   <div class="container">
+  
     <table>
       <thead>
         <tr>
@@ -45,7 +45,7 @@
       </tbody>      
     </table>
     
-  </div>
+ 
 </template>
 
 <script>
@@ -91,10 +91,15 @@ export default {
   }
   table {
     margin-bottom: 20px;
+    margin-top: 10px;
   }
 
   table thead th {
     font-size: 20px;
+  }
+
+  td, th {
+    padding: 4px 5px;
   }
  
 </style>

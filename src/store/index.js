@@ -195,9 +195,11 @@ export default createStore({
       activity
     }) {
       if (type == "men") {
-        state.calories = (10*weight + 6.25*height - 5*age + 5) * activity
+        state.selectedPregnant = null
+        state.calories = Math.ceil((10*weight + 6.25*height - 5*age + 5) * activity)
       } else {
-        state.calories = (10*weight + 6.25*height - 5*age - 161) * activity
+        state.calories =  Math.ceil((10*weight + 6.25*height - 5*age - 161) * activity)
+        
       }
     }
     /*  calcResults(state, payload) {   
