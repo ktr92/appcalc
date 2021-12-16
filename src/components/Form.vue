@@ -136,6 +136,9 @@ export default {
     }
 
     const reformula = () => {
+      if (inputType.value == "men") {
+          isPregnant.value = "0"
+        }
         store.commit('formula', {
           type: inputType.value,
           height: inputHeight.value,
@@ -143,11 +146,15 @@ export default {
           age: inputAge.value,
           activity: inputActivity.value
         }) 
+
     }
 
 
     const recalcformula = () => {
-       
+       if (inputType.value == "men") {
+          isPregnant.value = "0"
+        }
+
         
        store.commit('calc', {
           type: inputType.value,

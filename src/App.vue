@@ -11,6 +11,8 @@
           </div>
 
         </div>
+
+        <Cards />
       </div><!-- /.container -->
     </main>
   </div>
@@ -20,15 +22,18 @@
 import Form from './components/Form.vue'
 import { useStore } from "vuex";
 import Results from './components/Results.vue';
+import Cards from './components/Cards.vue';
 
 export default {
   name: 'App',  
   components: {
     Form,
     Results,
+    Cards
   },
   setup() {
     const store = useStore()
+    
   }
 }
 </script>
