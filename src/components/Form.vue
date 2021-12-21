@@ -2,23 +2,25 @@
  
     <form>
       <div class="radiogroup">
-        <label v-for="item in types" :key="item" :for="item.type">
-          <input 
-            class="with-gap"
-            name="inputType"
-            :id="item.type"
-            type="radio"  
-            :value="item.type" 
-            v-model="inputType"
-            @change="recalcformula"
-            >
-          <span>{{ item.label }}</span>
-        </label>
+        <div class="radiogroup__item"  v-for="item in types" :key="item" >
+           <input 
+              class="with-gap"
+              name="inputType"
+              :id="item.type"
+              type="radio"  
+              :value="item.type" 
+              v-model="inputType"
+              @change="recalcformula"
+              >
+          <label :for="item.type">
+            <span>{{ item.label }}</span>
+          </label>
+        </div><!-- /.radiogroup__ -->
        
       </div><!-- /.radiogroup -->
 
       <div class="input-field col s12" v-show="isWomen">
-        <select v-model="isPregnant" @change="recalc">
+        <select v-model="isPregnant" @change="recalcformula">
           <option value="0" selected>Нет</option>
           <option value="1">Беременность (1-я половина)</option>
           <option value="2">Беременность (2-я половина)</option>
@@ -38,63 +40,82 @@
 
       <div class="range">
         <label for="">Укажите возраст</label>
-            <Slider
+            <Slider class="slider-large"
         :lazy="false"
         :min="18"
-      
+       tooltipPosition="bottom"
         v-model="inputAge" 
         @update="recalcformula"/>
       </div>
 
       <div class="range">
         <label for="">Укажите рост</label>
-        <Slider
+        <Slider class="slider-large"
         :lazy="false"  
-       
+         tooltipPosition="bottom"
         v-model="inputHeight" 
-        :max="220"
+        :min="110"
+        :max="230"
         @update="recalcformula"/>
       </div>
     
        <div class="range">
         <label for="">Укажите вес</label>
-        <Slider
+        <Slider class="slider-large"
         :lazy="false"  
-        
+        tooltipPosition="bottom"
         v-model="inputWeight" 
+        :min="30"
+        :max="190"
         @update="recalcformula"/>
       </div>
+      
+      <div class="form-group">
         
-
-
+        <label for="">Укажите цель</label>
+        <div class="radiogroup">
+          
+          <div class="radiogroup__item"  v-for="item in target" :key="item.id" >
+            <input 
+                class="with-gap"
+                name="inputTarget"
+                :id="item.id"
+                type="radio"  
+                :value="item.kef" 
+                v-model="inputTarget"
+                @change="reformula"
+                >
+            <label :for="item.id">
+              <span>{{ item.name }}</span>
+            </label>
+          </div><!-- /.radiogroup__ -->
         
+        </div><!-- /.radiogroup -->
+      </div><!-- /.form-group -->
 
-     <!--  <p class="range-field">
-        <label>Укажите рост (см)</label>
-        <input type="range" min="100" max="250" 
-           v-model="inputHeight"
-          @input="reformula"
-         />
-      </p>
 
-       <p class="range-field">
-        <label>Укажите вес (кг)</label>
-        <input type="range" min="25" max="250" 
-           v-model="inputWeight"
-          @input="reformula"
-         />
-      </p> -->
-
-      <div class="input-field col s12">
-        <select v-model="inputActivity" @change="reformula">
-          <option value="1.2" >Минимальная активность</option>
-          <option value="1.375">Слабая активность</option>
-          <option value="1.55" selected>Средняя активность</option>
-          <option value="1.725">Высокая активность</option>
-          <option value="1.9">Экстра-активность</option>
-        </select>
-        <label>Уровень активности</label>
-      </div>
+      <div class="form-group">
+        
+        <label for="">Укажите вашу повседневную активность</label>
+        <div class="radiogroup">
+          
+          <div class="radiogroup__item"  v-for="item in activity" :key="item" >
+            <input 
+                class="with-gap"
+                name="inputActivity"
+                :id="item.id"
+                type="radio"  
+                :value="item.value" 
+                v-model="inputActivity"
+                @change="reformula"
+                >
+            <label :for="item.id">
+              <span>{{ item.name }}</span>
+            </label>
+          </div><!-- /.radiogroup__ -->
+        
+        </div><!-- /.radiogroup -->
+      </div><!-- /.form-group -->
 
 
     </form>
@@ -123,7 +144,10 @@ export default {
     let inputHeight = ref(170)
     let inputWeight = ref(60)
     let inputActivity = ref(1.55)
-    
+    let inputTarget = ref([0.3, 0.3, 0.4])
+    const activity = computed(() => store.getters.getActivity())
+    const target = computed(() => store.getters.getTarget())
+    const volokna = computed(() => store.getters.getVolokna())
     const recalc = () => {
       if (inputType.value == "men") {
           isPregnant.value = "0"
@@ -144,7 +168,8 @@ export default {
           height: inputHeight.value,
           weight: inputWeight.value,
           age: inputAge.value,
-          activity: inputActivity.value
+          activity: inputActivity.value,
+          target: inputTarget.value
         }) 
 
     }
@@ -167,7 +192,8 @@ export default {
           height: inputHeight.value,
           weight: inputWeight.value,
           age: inputAge.value,
-          activity: inputActivity.value
+          activity: inputActivity.value,
+          target: inputTarget.value
         }) 
 
      
@@ -190,7 +216,7 @@ export default {
 
     watch(() => {
        console.log()
-      
+   
     }) 
 
     onUpdated(() => {
@@ -199,6 +225,7 @@ export default {
     })
     
     onMounted(() => {
+  
       M.AutoInit()
   /*     var array_of_dom_elements = document.querySelectorAll("input[type=range]");
       M.Range.init(array_of_dom_elements); */
@@ -214,7 +241,8 @@ export default {
         height: inputHeight.value,
         weight: inputWeight.value,
         age: inputAge.value,
-        activity: inputActivity.value
+        activity: inputActivity.value,
+       target: inputTarget.value
       }) 
    
     })
@@ -230,7 +258,11 @@ export default {
       inputWeight,
       inputHeight,
       inputActivity,
-      recalcformula
+      recalcformula,
+      activity,
+      inputTarget,
+      target,
+      volokna
     }
   },
   
@@ -303,5 +335,60 @@ input[type=range]::-webkit-slider-thumb {
     margin-bottom: 10px;
     display: block;
   }
-  
+
+.form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-group label {
+        font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+input[type=radio] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 8px 20px;
+    background-color: #e7e7e7;
+    border-color: #ddd;
+    font-size: 16px;
+    cursor: pointer;
+    color: #585858;
+    margin-right: 5px;
+}
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+input[type=radio]:checked + label { 
+   background-image: none;
+    background-color: #10b981;
+    color: #fff;
+     border-color: #10b981
+}
+
+.radiogroup {
+    display: flex;
+}
+
+
+
+.slider-large {
+ --slider-handle-width: 36px;
+ --slider-handle-height: 20px;
+}
 </style>

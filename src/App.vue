@@ -5,6 +5,7 @@
         <div class="row">
           <div class="col-md-8"> 
             <Form /> 
+             <Cards />
           </div>
           <div class="col-md-4"> 
             <Results /> 
@@ -12,7 +13,7 @@
 
         </div>
 
-        <Cards />
+       
       </div><!-- /.container -->
     </main>
   </div>
