@@ -38,6 +38,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.725",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "18",
         ageTo: "49"
       },
@@ -51,6 +53,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.725",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "18",
         ageTo: "49"
       },
@@ -64,6 +68,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.2",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "18",
         ageTo: "39"
       },
@@ -77,6 +83,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.2",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "40",
         ageTo: "55"
       },
@@ -91,6 +99,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/now/now03881/l/49.jpg",
         who: "men",
         weight: "80",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "18",
         ageTo: "49"
@@ -104,6 +114,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/ndm/ndm01789/y/9.jpg",
         who: "men",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "18",
         ageTo: "49"
@@ -117,6 +129,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/mgf/mgf10355/y/41.jpg",
         who: "men",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "55",
         ageTo: "9999"
@@ -131,6 +145,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/ncr/ncr90128/y/28.jpg",
         who: "men",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "55",
         ageTo: "9999"
@@ -144,6 +160,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/gol/gol11369/y/28.jpg",
         who: "men",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "50",
         ageTo: "9999"
@@ -157,6 +175,8 @@ export default createStore({
         img: "https://s3.images-iherb.com/nwy/nwy15898/y/29.jpg",
         who: "men",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "50",
         ageTo: "9999"
@@ -172,6 +192,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.2",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "50",
         ageTo: "999"
       },
@@ -185,6 +207,8 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.2",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "50",
         ageTo: "999"
       },
@@ -199,11 +223,253 @@ export default createStore({
         who: "men",
         weight: "0",
         activity: "1.2",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         ageFrom: "18",
         ageTo: "49"
       },
 
 
+
+
+      {
+        id: "w008",
+        name: "ALLMAX Nutrition, Vitaform, мультивитамин премиального качества для женщин, 60 таблеток",
+        description: "Этот продукт удовлетворяет потребностям активных людей в высокой работоспособности. 100% рекомендуемой суточной нормы незаменимых питательных веществ",
+        url: "https://ru.iherb.com/pr/allmax-nutrition-vitaform-premium-multi-vitamin-for-women-60-tablets/98035?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/amx/amx22880/y/16.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.725",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+
+      {
+        id: "w006",
+        name: "MegaFood, Women Over 55, мультивитамины для женщин старше 55 лет, для приема один раз в день, 60 таблеток",
+        description: "Этот клоомплекс от MegaFood сделан из натуральных продуктов, полезных пищевых дрожжей и добавленных питательных веществ.",
+        url: "https://ru.iherb.com/pr/megafood-women-over-55-one-daily-60-tablets/83984?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/mgf/mgf10352/y/42.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "55",
+        ageTo: "999"
+      },
+
+      {
+        id: "w005",
+        name: "New Chapter, мультивитамины для женщин от 55 лет, один раз в день, 72 вегетарианские таблетки",
+        description: "Органический состав сертифицирован International Certification Services, Inc. Специальный состав для лучшего усвоения",
+        url: "https://ru.iherb.com/pr/new-chapter-55-every-woman-s-one-daily-multivitamin-72-vegetarian-tablets/73267?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/ncr/ncr90125/y/51.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "55",
+        ageTo: "999"
+      },
+      {
+        id: "w007",
+        name: "Thorne Research, мультивитамины для женщин старше 50 лет, 180 капсул",
+        description: "Комплекс витаминов и микроэлементов, который поддерживает здоровый и активный образ жизни",
+        url: "https://ru.iherb.com/pr/thorne-research-women-s-multi-50-180-capsules/102918?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/thr/thr01131/y/8.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "50",
+        ageTo: "999"
+      },
+
+      {
+        id: "w004",
+        name: "One-A-Day, полноценный мультивитаминный комплекс для женщин старше 50 лет, 100 таблеток",
+        description: "Мультивитаминный комплекс с ингредиентами, необходимыми для поддержки женского здоровья после 50 лет.",
+        url: "https://ru.iherb.com/pr/one-a-day-women-s-50-complete-multivitamin-100-tablets/69715?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/oad/oad56531/y/3.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "50",
+        ageTo: "999"
+      },
+
+      {
+        id: "w003",
+        name: "Nature's Way, Alive! жевательные витамины для женщин после 50 лет, со вкусом вишни и винограда, 75 жевательных таблеток",
+        description: "Полноценная мультивитаминная добавка. 16 витаминов и минералов с лютеином. Полный комплекс витаминов группы B.",
+        url: "https://ru.iherb.com/pr/nature-s-way-alive-women-s-50-gummy-vitamins-cherry-grape-75-gummies/50923?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/nwy/nwy15899/y/21.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "50",
+        ageTo: "999"
+      },
+      {
+        id: "w002",
+        name: "NATURELO, мультивитамины ежедневного применения для женщин старше 50 лет, 60 вегетарианских капсул",
+        description: "Добавки премиального качества. Разработано для поддержки костей, сердца, мозга. Подходит для веганов и вегетарианцев.",
+        url: "https://ru.iherb.com/pr/naturelo-one-daily-multivitamin-for-women-50-60-vegetarian-capsules/97677?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/nau/nau62805/y/59.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "50",
+        ageTo: "999"
+      },
+
+
+      {
+        id: "w010",
+        name: "Garden of Life, KIND Organics, Women's Once Daily, 60 веганских таблеток",
+        description: "Цельнопищевой мультивитаминный комплекс, который прошел сертификацию как органический продукт, проверен на отсутствие ГМО и изготовлен из натуральных питательных продуктов.",
+        url: "https://ru.iherb.com/pr/garden-of-life-mykind-organics-women-s-once-daily-60-vegan-tablets/58122?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/gol/gol11776/y/35.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "29"
+      },
+
+      {
+        id: "w011",
+        name: "Garden of Life, Vitamin Code, RAW One, мультивитаминная добавка для женщин (для приема 1 раз в день)",
+        description: "Добавка не содержит жаростойких синтетических связующих веществ, наполнителей, искусственных ароматизаторов, подсластителей, красителей и добавок, которые обычно используются при производстве таблеток.",
+        url: "https://ru.iherb.com/pr/garden-of-life-vitamin-code-raw-one-once-daily-multivitamin-for-women-75-vegetarian-capsules/18253?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/gol/gol11403/y/80.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "39"
+      },
+
+      {
+        id: "w020",
+        name: "Mommy's Bliss, пренатальные витамины с железом, 45 капсул",
+        description: "Пренатальные витамины с железом содержат важнейшие витамины и питательные вещества.",
+        url: "https://ru.iherb.com/pr/mommy-s-bliss-prenatal-multivitamin-iron-45-capsules/101987?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/bab/bab10627/y/0.jpg",
+        who: "pregnant",
+        weight: "50",
+        pregnantTo: '2',
+        pregnantFrom: '1',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "999"
+      },
+      {
+        id: "w019",
+        name: "NATURELO, мультивитамины для послеродового периода для кормящих мам, 180 вегетарианских капсул",
+        description: "Пищевые добавки премиального качества. Имеет регистрацию надлежащей производственной практики GMP, соответствует стандарту качества.",
+        url: "https://ru.iherb.com/pr/naturelo-postnatal-multivitamin-for-breastfeeding-moms-180-vegetarian-capsules/97681?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/nau/nau62837/y/32.jpg",
+        who: "pregnant",
+        weight: "50",
+        pregnantTo: '4',
+        pregnantFrom: '3',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "999"
+      },
+
+
+      {
+        id: "w019",
+        name: "New Chapter, Perfect Postnatal, мультивитамины из цельных продуктов, 96 вегетарианских таблеток",
+        description: "Обеспечивает молодых мам ключевыми питательными веществами для хорошего самочувствия и иммунной поддержкой на ранних этапах материнства, а также при грудном вскармливании.",
+        url: "https://ru.iherb.com/pr/new-chapter-perfect-postnatal-whole-food-multivitamin-96-vegetarian-tablets/82269?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/ncr/ncr90057/l/11.jpg",
+        who: "pregnant",
+        weight: "50",
+        pregnantTo: '4',
+        pregnantFrom: '3',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "999"
+      },
+
+
+      {
+        id: "w017",
+        name: "Super Nutrition, Смесь PreNatal, 180 таблеток",
+        description: "Для применения во время беременности и в послеродовой период.",
+        url: "https://ru.iherb.com/pr/super-nutrition-prenatal-blend-180-tablets/3223?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/spn/spn00144/y/19.jpg",
+        who: "pregnant",
+        weight: "50",
+        pregnantTo: '4',
+        pregnantFrom: '1',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "999"
+      },
+      {
+        id: "w018",
+        name: "MegaFood, Baby & Me 2, витамины для беременных, 60 таблеток",
+        description: "Baby&Me 2 Prenatal Multi от MegaFood поддерживает оптимальное питание до и во время беременности за счет определенных уровней железа, витаминов B12, B6 и D3.",
+        url: "https://ru.iherb.com/pr/megafood-baby-me-2-60-tablets/68213?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/mgf/mgf10314/y/53.jpg",
+        who: "pregnant",
+        weight: "50",
+        pregnantTo: '2',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "999"
+      },
+
+      {
+        id: "w016",
+        name: "Garden of Life, Мультивитамины для женщин в возрасте старше 40 лет, цельнопищевой мультивитамин, 120 веганских таблеток",
+        description: "Продукт изготовлен из настоящих пищевых продуктов — более 30 видов фруктов, овощей и трав.",
+        url: "https://ru.iherb.com/pr/garden-of-life-women-s-multi-40-whole-food-multivitamin-120-vegan-tablets/58119?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/gol/gol11778/y/15.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "40",
+        ageTo: "55"
+      },
+      {
+        id: "w015",
+        name: "MegaFood, мультивитамины для женщин от 40 лет, 60 таблеток",
+        description: "Смесь витаминов и микроэлементов обеспечивает уникальные физиологические потребности женщин, в том числе при колебаниях гормонального фона",
+        url: "https://ru.iherb.com/pr/megafood-multi-for-women-40-60-tablets/68436?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/mgf/mgf10321/y/49.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "40",
+        ageTo: "55"
+      },
 
 
 
@@ -215,10 +481,52 @@ export default createStore({
         img: "https://s3.images-iherb.com/now/now03803/l/76.jpg",
         who: "women",
         weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
         activity: "1.2",
         ageFrom: "18",
         ageTo: "49"
       },
+
+
+      {
+        id: "w014",
+        name: "Rainbow Light, Women's One Daily, витамины для женщины, 150 таблеток",
+        description: "Поддерживает здоровье иммунной системы, костей и мозга. Смесь суперфудов с пробиотиками Rainbow.",
+        url: "https://ru.iherb.com/pr/rainbow-light-women-s-one-multivitamin-150-tablets/12377?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/rlt/rlt10883/y/33.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+
+
+      {
+        id: "w012",
+        name: "NATURELO, мультивитамины ежедневного применения для женщин,120 вегетарианских капсул",
+        description: "Состав для поддержания энергии, иммунитета и здоровья костей. Надлежащая производственная практика (GMP)",
+        url: "https://ru.iherb.com/pr/naturelo-one-daily-multivitamin-for-women-120-vegetable-capsules/92975?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/nau/nau62803/y/43.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+
+
+
+
+
+
     ],
 
     category: [{

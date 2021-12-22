@@ -2,7 +2,12 @@
   <div class="row">
     <div class="col s6 m6 l4" 
       v-for="supp in supps" :key="supp.id"
-      v-show="(supp.who == type) && (+supp.ageTo >= +age) && (+supp.ageFrom <= +age) && (+supp.activity <= +activity)">
+      v-show="(supp.who == type)
+           && (+supp.ageTo >= +age) 
+           && (+supp.ageFrom <= +age) 
+           && (+supp.activity <= +activity)
+           && (+supp.pregnantFrom <= +pregnant)
+           && (+supp.pregnantTo >= +pregnant)">
       <div class="card">
         <a :href="supp.url" target="_blank">
           <div class="card-image">
@@ -41,7 +46,8 @@ export default {
       supps,
       type,
       age,
-      activity
+      activity,
+      pregnant
     }
   }
 }
