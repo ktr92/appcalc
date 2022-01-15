@@ -1,19 +1,24 @@
 <template>
   <div class="row">
+     <!--  <div 
+      v-for="supp in supps" :key="supp.id">
+      <a :href="supp.url" target="_blank">{{supp.name }}</a>
+      </div> -->
     <div class="col s6 m6 l4" 
-      v-for="supp in supps" :key="supp.id"
+      v-for="(supp, index) in supps" :key="supp.id"
       v-show="(supp.who == type)
            && (+supp.ageTo >= +age) 
            && (+supp.ageFrom <= +age) 
            && (+supp.activity <= +activity)
            && (+supp.pregnantFrom <= +pregnant)
-           && (+supp.pregnantTo >= +pregnant)">
-      <div class="card">
-        <a :href="supp.url" target="_blank">
-          <div class="card-image">
+           && (+supp.pregnantTo >= +pregnant)"
+      :style="{order: orderBy[index]}"
+    >
+    <div class="card">
+      <a :href="supp.url" target="_blank">
+        <div class="card-image">
           <img :src="supp.img">
           <span class="card-title">{{ supp.name }}</span>
-          
         </div>
         <div class="card-content">
           <p>{{ supp.description }}</p>
@@ -22,17 +27,18 @@
           <span class="btn-floating halfway-fab waves-effect waves-light red">Заказать на iHerb</span>
         </div>
       </a>
-      </div>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
 import { useStore } from "vuex";
-import { reactive, ref, computed, watch } from 'vue'
+import { reactive, ref, computed, watch, onMounted } from 'vue'
 
 export default {
-  setup() {
+  props: ['order'],
+  setup(props) {
     const store = useStore()
     
     const type = computed(() => store.getters.getSelectedType())
@@ -41,13 +47,16 @@ export default {
     const pregnant = computed(() => store.getters.getSelectedPregnant())
     const activity = computed(() => store.getters.getCurrentActivity())
 
+    const orderBy = ref(props.order)
 
     return {
       supps,
       type,
       age,
       activity,
-      pregnant
+      pregnant,
+      orderBy
+
     }
   }
 }

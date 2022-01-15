@@ -10,19 +10,19 @@
       <tbody>
         <tr >
           <td>Калорийность </td>
-          <td>{{ calories }} ккал</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ calories }} ккал</td>
         </tr>
         <tr >
           <td>Белки </td>
-          <td>{{ proteins }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ proteins }} г</td>
         </tr>
         <tr >
           <td>Жиры </td>
-          <td>{{ fats }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ fats }} г</td>
         </tr>
         <tr >
           <td>Углеводы </td>
-          <td>{{ carbohydrates }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ carbohydrates }} г</td>
         </tr>
          <tr >
           <td>Пищевые волокна </td>
@@ -30,19 +30,19 @@
         </tr>        
         <tr >
           <td>МНЖК </td>
-          <td>{{ mnjk }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ mnjk }} г</td>
         </tr>
         <tr >
           <td>ПНЖК </td>
-          <td>{{ pnjk[0] }} - {{ pnjk[1] }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ pnjk[0] }} - {{ pnjk[1] }} г</td>
         </tr>
         <tr >
           <td>Омега-6 </td>
-          <td>{{ omega6[0] }} - {{ omega6[1] }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ omega6[0] }} - {{ omega6[1] }} г</td>
         </tr>
         <tr >
           <td>Омега-3 </td>
-          <td>{{ omega3[0] }} - {{ omega3[1] }} г</td>
+          <td :class="{greentext: isMore, redtext: isLess}">{{ omega3[0] }} - {{ omega3[1] }} г</td>
         </tr>
       </tbody>      
     </table>
@@ -83,16 +83,18 @@
 </template>
 
 <script>
-import { useStore } from "vuex";
-import {reactive, ref, computed, watch} from 'vue'
+import { mapGetters, useStore } from "vuex";
+import {reactive, ref, computed, watch, onMounted} from 'vue'
 import Form from './Form.vue'
 
 export default {
+  
   name: 'Results',
+  emits: ['anyChanges'],
   components: {
     Form 
   },
-  setup() {
+  setup(props, { emit }) {
     const store = useStore()
     const vitamins = computed(() => store.getters.getVitamins())
     const minerals = computed(() => store.getters.getMinerals())
@@ -110,10 +112,37 @@ export default {
     const omega6 = computed(() => store.getters.getOmega6())
     const lipides = computed(() => store.getters.getLipides())
 
-     watch(() => {
-       console.log()
-    }) 
-    
+    const isMore = ref(false)
+    const isLess = ref(false)
+
+
+     watch(
+      () => calories.value,
+       (newValue,  oldValue) => {
+       if (newValue > oldValue) {
+          isMore.value = true
+          isLess.value = false
+        }
+        else if (newValue < oldValue) {
+          isMore.value = false
+          isLess.value = true
+        }
+        else {
+          isMore.value = false
+          isLess.value = false
+        } 
+        emit('anyChanges')
+      }
+    )
+
+    onMounted(() => {
+    /*   console.log('mounted') */
+        
+      isMore.value = false
+      isLess.value = false
+    })
+
+ 
     return {
      vitamins, 
      minerals,
@@ -129,7 +158,9 @@ export default {
      pnjk,
      omega3,
      omega6,
-     lipides
+     lipides,
+     isLess,
+     isMore,
     }
 
   }
@@ -137,6 +168,10 @@ export default {
 </script>
 
 <style scoped>
+
+  .bordered {
+     box-shadow: 0 0 5px 0px #10b981;
+  }
 
   table tr td:first-child {
     width: 70%;
@@ -152,6 +187,16 @@ export default {
 
   td, th {
     padding: 4px 5px;
+  }
+
+  .greentext {
+    color:  #10b981;
+    font-weight: bold;
+  }
+
+  .redtext {
+    color: #ff7d7d;
+    font-weight: bold;
   }
  
 </style>

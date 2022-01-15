@@ -16,7 +16,7 @@ export default createStore({
     selectedWeight: 60,
     selectedActivity: 1.55,
     selectedTarget: [0.3, 0.3, 0.4],
-    calories: 0,
+    calories: 2275 ,
     proteins: 0,
     fats: 0,
     carbohydrates: 0,
@@ -26,6 +26,7 @@ export default createStore({
     omega6: [0, 0],
     omega3: [0, 0],
     lipides: [0, 0],
+    
 
     supplements: [
 
@@ -520,6 +521,172 @@ export default createStore({
         ageFrom: "18",
         ageTo: "49"
       },
+
+      {
+        id: "w021",
+        name: "Now Foods, Special Two, мультивитамины, 240 растительных капсул",
+        description: "С зелеными суперпродуктами и растительными экстрактами. Подходит для вегетарианцев и веганов.",
+        url: "https://ru.iherb.com/pr/now-foods-special-two-multi-vitamin-240-veg-capsules/787?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/now/now03869/y/24.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+      {
+        id: "m027",
+        name: "Now Foods, Special Two, мультивитамины, 240 растительных капсул",
+        description: "С зелеными суперпродуктами и растительными экстрактами. Подходит для вегетарианцев и веганов.",
+        url: "https://ru.iherb.com/pr/now-foods-special-two-multi-vitamin-240-veg-capsules/787?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/now/now03869/y/24.jpg",
+        who: "men",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+      {
+        id: "m022",
+        name: "Now Foods, мягкие таблетки с жидкими мультивитаминами, 180 мягких таблеток",
+        description: "Быстрое усвоение. Пищевая добавка с лютеином и ликопином + масло семян льна.",
+        url: "https://ru.iherb.com/pr/now-foods-liquid-multi-gels-180-softgels/6112?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/now/now03817/y/9.jpg",
+        who: "men",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+
+      {
+        id: "w022",
+        name: "Now Foods, мягкие таблетки с жидкими мультивитаминами, 180 мягких таблеток",
+        description: "Быстрое усвоение. Пищевая добавка с лютеином и ликопином + масло семян льна.",
+        url: "https://ru.iherb.com/pr/now-foods-liquid-multi-gels-180-softgels/6112?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/now/now03817/y/9.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+
+      {
+        id: "w023",
+        name: "Natural Factors, Мультистарт для женщин, 90 таблеток",
+        description: "Комплексная основа, включающая полный спектр питательных веществ, трав и антиоксидантов в идеальном соотношении и порции",
+        url: "https://ru.iherb.com/pr/natural-factors-women-s-multistart-90-tablets/105648?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/nfs/nfs01580/y/8.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "49"
+      },
+
+      {
+        id: "m023",
+        name: "Ultamins, Мультивитамины для мужчин старше 50 лет",
+        description: "Мультивитаминная смесь для мужчин после 50, содержащая 100 мг коэнзима Q10 в 1 порции, а также ликопин, лютеин, метил В12, сереною, грибы, ферменты, овощи, ягоды и многое другое!",
+        url: "https://ru.iherb.com/pr/ultamins-men-s-50-multivitamin-with-coq10-mushrooms-enzymes-veggies-berries-60-veggie-capsules/96381?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/ulm/ulm01271/y/13.jpg",
+        who: "men",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "50",
+        ageTo: "999"
+      },
+
+
+      {
+        id: "w024",
+        name: "Gummiology, мультивитамины для взрослых в жевательных таблетках, с натуральным вкусом малины, 100 вегетарианских жевательных таблеток",
+        description: "Вкусные жевательные таблетки для взрослых с пектином и эффективными ингредиентами!",
+        url: "https://ru.iherb.com/pr/gummiology-adult-multivitamin-gummies-natural-raspberry-flavor-100-vegetarian-gummies/95750?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/gmm/gmm01476/y/45.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "54"
+      },
+      {
+        id: "m025",
+        name: "Life Extension, Мультивитамины для двух приемов в день, 60 капсул",
+        description: "Мультивитамины для приема дважды в день содержат широкий спектр необходимых витаминов, минералов и других питательных веществ",
+        url: "https://ru.iherb.com/pr/life-extension-two-per-day-multivitamin-60-capsules/86456?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/lex/lex23176/y/58.jpg",
+        who: "men",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "54"
+      },
+
+      {
+        id: "w025",
+        name: "Life Extension, Мультивитамины для двух приемов в день, 60 капсул",
+        description: "Мультивитамины для приема дважды в день содержат широкий спектр необходимых витаминов, минералов и других питательных веществ",
+        url: "https://ru.iherb.com/pr/life-extension-two-per-day-multivitamin-60-capsules/86456?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/lex/lex23176/y/58.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "54"
+      },
+
+      {
+        id: "w026",
+        name: "Thorne Research, базовые питательные вещества для приема 2 капсул в день, 60 капсул",
+        description: "Достаточно всего двух капсул этой добавки, чтобы обеспечить себя полноценной мультивитаминной и богатой микроэлементами формулой на целый день.",
+        url: "https://ru.iherb.com/pr/thorne-research-basic-nutrients-2-day-60-capsules/85476?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/thr/thr00684/y/26.jpg",
+        who: "women",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "54"
+      },
+      {
+        id: "m026",
+        name: "Thorne Research, базовые питательные вещества для приема 2 капсул в день, 60 капсул",
+        description: "Достаточно всего двух капсул этой добавки, чтобы обеспечить себя полноценной мультивитаминной и богатой микроэлементами формулой на целый день.",
+        url: "https://ru.iherb.com/pr/thorne-research-basic-nutrients-2-day-60-capsules/85476?rcode=DEP4540",
+        img: "https://s3.images-iherb.com/thr/thr00684/y/26.jpg",
+        who: "men",
+        weight: "50",
+        pregnantTo: '0',
+        pregnantFrom: '0',
+        activity: "1.2",
+        ageFrom: "18",
+        ageTo: "54"
+      },
+
 
 
 
@@ -2010,9 +2177,7 @@ export default createStore({
       }
     ],
 
-
-
-
+   
   },
   mutations: {
     calc(state, {

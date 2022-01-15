@@ -39,13 +39,14 @@
       </p> -->
 
       <div class="range">
-        <label for="">Укажите возраст</label>
+        <label for="" >Укажите возраст</label>
             <Slider class="slider-large"
-        :lazy="false"
-        :min="18"
-       tooltipPosition="bottom"
-        v-model="inputAge" 
-        @update="recalcformula"/>
+              :lazy="false"
+              :min="18"
+              tooltipPosition="bottom"
+              v-model="inputAge" 
+              @update="recalcformula"
+            />
       </div>
 
       <div class="range">
@@ -70,7 +71,7 @@
         @update="recalcformula"/>
       </div>
       
-      <div class="form-group">
+      <div class="form-group" v-show="0">
         
         <label for="">Укажите цель</label>
         <div class="radiogroup">
@@ -108,6 +109,7 @@
                 :value="item.value" 
                 v-model="inputActivity"
                 @change="reformula"
+                
                 >
             <label :for="item.id">
               <span>{{ item.name }}</span>
@@ -148,6 +150,11 @@ export default {
     const activity = computed(() => store.getters.getActivity())
     const target = computed(() => store.getters.getTarget())
     const volokna = computed(() => store.getters.getVolokna())
+
+    const test = () => {
+      console.log('test')
+    }
+
     const recalc = () => {
       if (inputType.value == "men") {
           isPregnant.value = "0"
@@ -171,6 +178,7 @@ export default {
           activity: inputActivity.value,
           target: inputTarget.value
         }) 
+        
 
     }
 
@@ -179,6 +187,8 @@ export default {
        if (inputType.value == "men") {
           isPregnant.value = "0"
         }
+
+       
 
         
        store.commit('calc', {
@@ -195,6 +205,9 @@ export default {
           activity: inputActivity.value,
           target: inputTarget.value
         }) 
+
+
+       
 
      
 
@@ -214,11 +227,7 @@ export default {
      */
 
 
-    watch(() => {
-       console.log()
    
-    }) 
-
     onUpdated(() => {
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
@@ -262,7 +271,8 @@ export default {
       activity,
       inputTarget,
       target,
-      volokna
+      volokna,
+      test
     }
   },
   
@@ -327,7 +337,7 @@ input[type=range]::-webkit-slider-thumb {
   }
 
   .range {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
 
   .range label {
@@ -388,7 +398,7 @@ input[type=radio]:checked + label {
 
 
 .slider-large {
- --slider-handle-width: 36px;
- --slider-handle-height: 20px;
+ --slider-handle-width: 25px;
+ --slider-handle-height: 25px;
 }
 </style>
